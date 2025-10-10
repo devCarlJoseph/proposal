@@ -1,11 +1,361 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Eatery Inventory</title>
+  <style>
+    :root{
+      --bg:#f6f7fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#ef6c35;
+      --accent-2:#ff9a5a;
+      --success:#16a34a;
+      --danger:#dc2626;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#f6f7fb 0%, #ffffff 100%);
+      color:#111827;
+      padding:24px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .container{
+      max-width:980px;
+      margin:0 auto;
+    }
+
+    header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:18px;
+    }
+    h1{font-size:20px;margin:0}
+    p.subtitle{margin:0;color:var(--muted);font-size:13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:18px;
+    }
+
+    /* card */
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 6px 18px rgba(15,23,42,0.06);
+    }
+
+    /* form */
+    form .row{
+      display:flex;
+      gap:8px;
+      margin-bottom:10px;
+    }
+    label{font-size:13px;color:var(--muted);display:block;margin-bottom:6px}
+    input[type="text"],
+    input[type="number"],
+    select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid #e6e9ef;
+      background:#fff;
+      font-size:14px;
+    }
+    button.btn{
+      padding:10px 12px;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn-primary{background:var(--accent); color:white}
+    .btn-ghost{background:transparent;border:1px solid #e6e9ef;color:var(--muted)}
+
+    /* table */
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+    }
+    thead th{
+      text-align:left;
+      font-size:12px;
+      color:var(--muted);
+      padding:10px 12px;
+      border-bottom:1px dashed #eef0f3;
+    }
+    tbody td{
+      padding:10px 12px;
+      border-bottom:1px solid #f1f3f6;
+      vertical-align:middle;
+    }
+    .qty{
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+    }
+    .small{
+      font-size:13px;color:var(--muted)
+    }
+
+    /* actions */
+    .actions button{
+      margin-left:6px;
+      padding:6px 8px;
+      font-size:13px;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+    }
+    .edit{background:#f3f4f6;color:#111827}
+    .delete{background:var(--danger);color:white}
+
+    /* search & totals */
+    .topbar{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+    }
+    .search input{
+      padding:10px 12px;border-radius:10px;border:1px solid #e6e9ef;width:320px;
+    }
+    .totals{
+      text-align:right;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* responsive */
+    @media (max-width:920px){
+      .grid{grid-template-columns:1fr; padding-bottom:40px}
+      .search input{width:100%}
+    }
+  </style>
 </head>
 <body>
-    
+  <div class="container">
+    <header>
+      <div>
+        <h1>Eatery Inventory</h1>
+        <p class="subtitle">Track your ingredients, quantities, and cost — simple and fast.</p>
+      </div>
+      <div class="small">Local, browser-only demo</div>
+    </header>
+
+    <div class="grid">
+      <!-- left: form -->
+      <div class="card">
+        <h3 style="margin-top:0;margin-bottom:10px">Add / Update Item</h3>
+
+        <form id="itemForm">
+          <label for="name">Item name</label>
+          <input id="name" type="text" placeholder="e.g. Rice (5kg)">
+
+          <div class="row">
+            <div style="flex:1">
+              <label for="qty">Quantity</label>
+              <input id="qty" type="number" min="0" value="1">
+            </div>
+            <div style="width:120px">
+              <label for="unit">Unit</label>
+              <select id="unit">
+                <option value="pcs">pcs</option>
+                <option value="kg">kg</option>
+                <option value="g">g</option>
+                <option value="l">l</option>
+              </select>
+            </div>
+          </div>
+
+          <label for="price">Unit price (₱)</label>
+          <input id="price" type="number" min="0" step="0.01" value="0.00">
+
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button type="submit" class="btn btn-primary">Add / Save</button>
+            <button type="button" id="clearBtn" class="btn btn-ghost">Clear</button>
+          </div>
+
+          <input type="hidden" id="editingId" value="">
+        </form>
+
+        <hr style="margin:14px 0;border:0;border-top:1px dashed #eef0f3">
+
+        <div>
+          <p class="small" style="margin:0 0 6px 0"><strong>Tips:</strong> Use descriptive names like "Tomato (kg)" or "Cooking Oil (L)".</p>
+          <p class="small" style="margin:0">This data is stored only in your browser (temporary). Save/export later if needed.</p>
+        </div>
+      </div>
+
+      <!-- right: table -->
+      <div class="card">
+        <div class="topbar">
+          <div class="search">
+            <input id="search" placeholder="Search items or units…">
+          </div>
+          <div class="totals">
+            Total items: <span id="totalItems">0</span> • Total value: ₱<span id="totalValue">0.00</span>
+          </div>
+        </div>
+
+        <div style="overflow:auto; max-height:520px;">
+          <table id="inventoryTable" aria-live="polite">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th style="width:120px">Quantity</th>
+                <th style="width:120px">Unit Price</th>
+                <th style="width:120px">Value</th>
+                <th style="width:150px">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- rows injected here -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Minimal client-side inventory (no server). Small and readable.
+    const form = document.getElementById('itemForm');
+    const nameInput = document.getElementById('name');
+    const qtyInput = document.getElementById('qty');
+    const unitInput = document.getElementById('unit');
+    const priceInput = document.getElementById('price');
+    const editingIdInput = document.getElementById('editingId');
+    const tableBody = document.querySelector('#inventoryTable tbody');
+    const totalItemsEl = document.getElementById('totalItems');
+    const totalValueEl = document.getElementById('totalValue');
+    const clearBtn = document.getElementById('clearBtn');
+    const searchInput = document.getElementById('search');
+
+    // Use an array to store items
+    let items = [
+      // example starter item
+      { id: genId(), name: 'Rice (5kg)', qty: 10, unit: 'kg', price: 250.00 }
+    ];
+
+    function genId(){ return 'i' + Math.random().toString(36).slice(2,9) }
+
+    // render table rows
+    function render(filter=''){
+      tableBody.innerHTML = '';
+      const visible = items.filter(it => (it.name + ' ' + it.unit).toLowerCase().includes(filter.toLowerCase()));
+      visible.forEach(it => {
+        const value = (it.qty * it.price) || 0;
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><div style="font-weight:600">${escapeHtml(it.name)}</div><div class="small">${escapeHtml(it.unit)}</div></td>
+          <td><div class="qty">${escapeHtml(it.qty.toString())}</div></td>
+          <td>₱${formatMoney(it.price)}</td>
+          <td>₱${formatMoney(value)}</td>
+          <td class="actions">
+            <button class="edit" onclick="startEdit('${it.id}')">Edit</button>
+            <button class="delete" onclick="removeItem('${it.id}')">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      // totals
+      totalItemsEl.textContent = items.length;
+      const total = items.reduce((s,i)=>s + (i.qty * i.price || 0), 0);
+      totalValueEl.textContent = formatMoney(total);
+    }
+
+    // helper
+    function formatMoney(n){ return Number(n).toLocaleString(undefined, {minimumFractionDigits:2, maximumFractionDigits:2}) }
+    function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;') }
+
+    // add or save
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = nameInput.value.trim();
+      const qty = Number(qtyInput.value) || 0;
+      const unit = unitInput.value;
+      const price = Number(priceInput.value) || 0;
+      if(!name){ alert('Please enter an item name.'); return; }
+
+      const editingId = editingIdInput.value;
+      if(editingId){
+        // update existing
+        const idx = items.findIndex(i => i.id === editingId);
+        if(idx !== -1){
+          items[idx] = { id: editingId, name, qty, unit, price };
+        }
+        editingIdInput.value = '';
+      } else {
+        // new item
+        items.push({ id: genId(), name, qty, unit, price });
+      }
+
+      form.reset();
+      qtyInput.value = 1;
+      priceInput.value = '0.00';
+      render(searchInput.value);
+    });
+
+    function startEdit(id){
+      const it = items.find(i=>i.id===id);
+      if(!it) return;
+      nameInput.value = it.name;
+      qtyInput.value = it.qty;
+      unitInput.value = it.unit;
+      priceInput.value = it.price;
+      editingIdInput.value = it.id;
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    function removeItem(id){
+      if(!confirm('Delete this item?')) return;
+      items = items.filter(i=>i.id!==id);
+      render(searchInput.value);
+    }
+
+    clearBtn.addEventListener('click', () => {
+      form.reset();
+      qtyInput.value = 1;
+      priceInput.value = '0.00';
+      editingIdInput.value = '';
+    });
+
+    searchInput.addEventListener('input', () => render(searchInput.value));
+
+    // init
+    render();
+
+    // Expose functions to window so inline onclick can access them
+    window.startEdit = startEdit;
+    window.removeItem = removeItem;
+
+    // Optional: persist to localStorage (uncomment to enable)
+    // NOTE: data in localStorage stays across reloads on this browser.
+    const STORAGE_KEY = 'eatery_inventory_v1';
+    // load saved
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if(saved) items = JSON.parse(saved);
+    } catch(e){ /* ignore */ }
+    // save on change
+    const saveTimer = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    // simple observer: save whenever render is called by pushing this into it
+    const originalRender = render;
+    render = (filter='') => { originalRender(filter); saveTimer(); };
+
+    // re-run to persist initial state
+    render();
+  </script>
 </body>
 </html>
