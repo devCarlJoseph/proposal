@@ -1,0 +1,123 @@
+/* Load Inter Font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+/* --- THEME COLOR DEFINITION --- */
+:root {
+    /* Deep Teal / Aqua for a modern culinary look */
+    --theme-color: #1A938C;
+    /* Slightly darker for hover/active state */
+    --theme-color-dark: #157973;
+    /* Light theme color for badge background */
+    --theme-color-light: #6ac5c0;
+}
+
+/* Custom Utility Classes to replace Bootstrap's 'danger' for the theme */
+.text-theme {
+    color: var(--theme-color) !important;
+}
+
+.border-theme {
+    border-color: var(--theme-color) !important;
+}
+
+.bg-theme {
+    background-color: var(--theme-color) !important;
+}
+
+/* Custom Button Style */
+.btn-theme {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--theme-color);
+    --bs-btn-border-color: var(--theme-color);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--theme-color-dark);
+    --bs-btn-hover-border-color: var(--theme-color-dark);
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--theme-color-dark);
+    --bs-btn-active-border-color: var(--theme-color-dark);
+    --bs-btn-disabled-bg: #89b8b6;
+    /* Lighter shade for disabled state */
+    --bs-btn-disabled-border-color: #89b8b6;
+}
+
+.badge-theme {
+    background-color: var(--theme-color-light);
+    color: white;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Custom styling for the search input field */
+.search-input-custom {
+    border: 2px solid #e0e0e0;
+    transition: all 0.2s ease-in-out;
+}
+
+.search-input-custom:focus {
+    border-color: var(--theme-color);
+    box-shadow: 0 0 0 0.25rem rgba(26, 147, 140, 0.25);
+    /* Theme color with opacity */
+    background-color: #ffffff;
+}
+
+/* Custom scrollbar for cart for aesthetics */
+#cart-items-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+#cart-items-container::-webkit-scrollbar-thumb {
+    background-color: var(--theme-color);
+    border-radius: 4px;
+}
+
+/* Modal styling for universal cart */
+.universal-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    /* Above navbar */
+}
+
+.modal-content-area {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 90%;
+    width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.2s ease-out;
+}
+
+.universal-modal:not(.d-none) .modal-content-area {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Mobile specific positioning for modal to pop up from bottom */
+@media (max-width: 768px) {
+    .modal-content-area {
+        width: 100%;
+        border-radius: 1rem 1rem 0 0;
+        position: absolute;
+        bottom: 0;
+        max-width: 100%;
+    }
+
+    .universal-modal {
+        align-items: flex-end;
+        /* Stick to bottom on small screens */
+    }
+}

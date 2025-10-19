@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lourdes Eatery</title>
+    <link rel="icon" type="image/x-icon" href="src/images/logo.png">
+    <!-- Load Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        xintegrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="src/css/restaurant.css">
+
+    <script src="src/js/restaurant.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <!-- Brand text color changed to use the new accent color (Teal) -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand playfair-heading fs-4 fw-bold text-accent-color" href="inventory.html">Lourdes
+                Eatery</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-dark" href="#menu-section">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#location">Location</a></li>
+                    <!-- Button class changed to use the new primary accent styles (Dark Outline) -->
+                    <li class="nav-item"><a class="nav-link btn btn-outline-primary-accent ms-lg-3 px-4 fw-semibold"
+                            href="order.html">Order
+                            Online</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section mb-5">
+        <div class="hero-overlay"></div>
+        <div class="hero-content text-center">
+            <h1 class="playfair-heading display-1 fw-bold mb-3">Lourdes Eatery</h1>
+            <p class="lead fs-4 fw-light text-white mb-4">Experience the Taste of Homegrown Goodness.</p>
+            <!-- Button class updated: uses new teal primary accent styles -->
+            <a href="#menu-section" class="btn btn-primary-accent btn-lg fw-semibold" role="button">View Today's
+                Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <main class="container py-5" id="menu-section">
+        <header class="text-center mb-5">
+            <h2 class="playfair-heading display-5 fw-bold text-dark">Our Menu</h2>
+        </header>
+
+        <!-- Search and Filter Controls: WIDTH HAS BEEN REDUCED AND CENTERED -->
+        <div class="row g-3 mb-4 d-flex justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <input type="text" id="menu-search"
+                    class="form-control form-control-lg rounded-pill px-4 shadow-sm border-0"
+                    placeholder="Search by dish name">
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="d-flex justify-content-center mb-5 border-bottom">
+            <ul class="nav nav-tabs border-0">
+                <li class="nav-item">
+                    <a class="nav-link filter-tab fs-5 px-4 active" id="tab-today" href="#">Today's Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link filter-tab fs-5 px-4" id="tab-all" href="#">Full Menu</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Dynamic Status Indicator -->
+        <h3 id="status-indicator" class="playfair-heading fs-4 fw-bold text-center text-muted mb-4">Loading Menu...</h3>
+
+        <!-- Menu Grid View -->
+        <section id="menu-grid-view" class="row g-4" style="display: flex;">
+            <div class="col-12 text-center py-5 text-secondary">Initializing content...</div>
+        </section>
+
+        <!-- Accordion View (Kept as placeholder, but always hidden) -->
+        <section id="menu-accordion-view" class="row g-4" style="display: none;">
+        </section>
+
+    </main>
+
+    <!-- --- ABOUT US SECTION --- -->
+    <!-- Background is still light, but colors and text are richer -->
+    <section id="about-us" class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="playfair-heading display-5 fw-bold text-dark mb-4">Lourdes Eatery Story</h2>
+                    <p class="lead text-muted">Founded on the belief that simple, fresh ingredients make the best meals,
+                        Lourdes Eatery is your local modern bistro.</p>
+                    <p>We partner with local farmers and artisans to ensure every item on our menu is seasonal and of
+                        the highest quality. Our philosophy is rooted in **authenticity and passion for honest
+                        cooking**.
+                        Whether you're grabbing a quick breakfast or settling in for a multi-course dinner, you'll taste
+                        the difference that dedication makes.</p>
+                    <!-- Text color changed to use the new accent color (Teal) -->
+                    <p class="fw-semibold text-accent-color">Come share a plate with us.</p>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <!-- Placeholder image updated to match the new dark color -->
+                    <img src="src/images/about us.jpg" class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- LOCATION SECTION --- -->
+    <section id="location" class="py-5 bg-light">
+        <div class="container">
+            <header class="text-center mb-5">
+                <h2 class="playfair-heading display-5 fw-bold text-dark">Visit Us</h2>
+                <p class="text-muted">We’d love to see you at our bistro! Here’s how to find us.</p>
+            </header>
+
+            <div class="row g-4">
+                <!-- Contact Info Card -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+                        <h3 class="playfair-heading fs-4 fw-bold mb-3">Find Our Bistro</h3>
+
+                        <div class="mb-4">
+                            <p class="fw-semibold mb-1 text-dark">
+                                <i class="fas fa-map-marker-alt text-accent-color me-2"></i> Address
+                            </p>
+                            <p class="text-muted">Calan Poblacion, Cordova, Cebu</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-semibold mb-1 text-dark">
+                                <i class="fas fa-clock text-accent-color me-2"></i> Hours of Operation
+                            </p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li><span class="fw-medium">Mon - Fri:</span> 9:00 AM – 10:00 PM</li>
+                                <li><span class="fw-medium">Saturday:</span> 8:00 AM – 10:00 PM</li>
+                                <li><span class="fw-medium">Sunday:</span> 8:00 AM – 9:00 PM (Brunch until 2 PM)</li>
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="fw-semibold mb-1 text-dark">
+                                <i class="fas fa-phone-alt text-accent-color me-2"></i> Contact
+                            </p>
+                            <p class="mb-1">Phone: <span class="text-accent-color fw-bold">123 456 8910</span></p>
+                            <p class="mb-0">Email: <a href="mailto:info@thedailyplate.com"
+                                    class="text-decoration-none text-dark">
+                                    <i class="fas fa-envelope me-1"></i> test123@gmail.com
+                                </a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Map Card -->
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100">
+                        <h3 class="playfair-heading fs-4 fw-bold p-4 mb-0">
+                            <i class="fas fa-map-marked-alt text-accent-color me-2"></i> Our Location
+                        </h3>
+                        <div class="ratio ratio-16x9">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!4v1760895654486!6m8!1m7!1s0fVjWi8W3evNIZJfwXLahg!2m2!1d10.25374837378858!2d123.9510848956123!3f333.39118530517504!4f-26.595241262589596!5f0.7820865974627469"
+                                style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <!-- Footer background uses the new bg-dark-custom (Deep Slate/Midnight Blue) -->
+    <footer class="bg-dark-custom text-white py-4 mt-5">
+        <div class="container text-center">
+
+            <!-- Footer name text color changed to use the new accent color (Teal) -->
+            <p class="playfair-heading fs-5 text-accent-color fw-bold mb-2">Lourdes Eatery</p>
+            <p class="small text-white opacity-75 mb-3">Experience the Taste of Homegrown Goodness.</p>
+
+            <div class="d-flex justify-content-center gap-3 mb-3 small">
+                <a href="#menu-section" class="footer-link-simple">Menu</a>
+                <span class="text-white opacity-50">|</span>
+                <a href="#location" class="footer-link-simple">Location</a>
+                <span class="text-white opacity-50">|</span>
+                <a href="tel:555555FOOD" class="footer-link-simple">123 456 8910</a>
+                <span class="text-white opacity-50">|</span>
+                <!-- Order Online link text color changed to use the new accent color (Teal) -->
+                <a href="order.html" class="footer-link-simple text-accent-color fw-bold">Order Online</a>
+            </div>
+
+            <p class="small text-white opacity-50 mt-3 mb-0">
+                &copy; 2025 Lourdes Eatery. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Load Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

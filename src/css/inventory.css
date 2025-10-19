@@ -1,0 +1,90 @@
+/* Load Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+:root {
+    /* Deep Teal / Aqua theme */
+    --theme-color: #1A938C;
+    --theme-color-dark: #157973;
+    --low-stock-color: #dc3545;
+    /* Bootstrap Red */
+    --bg-color: #f8f8f8;
+    --logout-color: #dc3545;
+    --logout-color-dark: #c82333;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+}
+
+/* Custom Button Style */
+.btn-theme {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--theme-color);
+    --bs-btn-border-color: var(--theme-color);
+    --bs-btn-hover-bg: var(--theme-color-dark);
+    --bs-btn-hover-border-color: var(--theme-color-dark);
+}
+
+.btn-logout {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--logout-color);
+    --bs-btn-border-color: var(--logout-color);
+    --bs-btn-hover-bg: var(--logout-color-dark);
+    --bs-btn-hover-border-color: var(--logout-color-dark);
+}
+
+/* Inventory Table Styling */
+.table-responsive {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+    background-color: var(--theme-color);
+    color: white;
+    border-bottom: 2px solid var(--theme-color-dark);
+    vertical-align: middle;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+
+.low-stock {
+    font-weight: 600;
+    color: var(--low-stock-color);
+}
+
+.action-btn {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    margin: 0.15rem;
+    border-radius: 0.5rem;
+    min-width: 60px;
+}
+
+/* Custom Modal Replacement for prompt/confirm */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    /* Bootstrap modal Z-index */
+}
+
+.custom-modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}

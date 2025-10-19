@@ -1,0 +1,171 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+:root {
+    /* --- NEW COLOR PALETTE: Deep Slate and Elegant Teal --- */
+    --bs-primary-dark: #2C3E50;
+    /* Deep Slate/Midnight Blue for text/footer */
+    --bs-primary-dark-rgb: 44, 62, 80;
+    --bs-accent: #16A085;
+    /* Elegant Teal for primary action/links */
+    --bs-accent-rgb: 22, 160, 133;
+
+    /* Overriding Bootstrap variables with the new accent color */
+    --bs-danger: var(--bs-accent);
+    --bs-danger-rgb: var(--bs-accent-rgb);
+}
+
+/* 1. Use custom dark slate/midnight blue for the footer background and primary text */
+.bg-dark-custom {
+    background-color: var(--bs-primary-dark) !important;
+}
+
+/* 2. Style links to use the teal accent on hover */
+.footer-link-simple {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 0.95rem;
+}
+
+.footer-link-simple:hover {
+    color: var(--bs-accent);
+    /* Use the new teal accent */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #EFF3F4;
+    /* Lighter, complementary background */
+    scroll-behavior: smooth;
+}
+
+/* Update standard text color to Deep Slate for better contrast against light background */
+.text-dark {
+    color: var(--bs-primary-dark) !important;
+}
+
+/* Custom utility classes for the new accent color */
+.text-accent-color {
+    color: var(--bs-accent) !important;
+}
+
+/* --- BUTTON STYLES FOR TEAL ACCENT --- */
+.btn-primary-accent {
+    background-color: var(--bs-accent);
+    border-color: var(--bs-accent);
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-primary-accent:hover {
+    background-color: #127966;
+    /* Slightly darker teal on hover */
+    border-color: #127966;
+    color: #fff;
+}
+
+.btn-outline-primary-accent {
+    color: var(--bs-primary-dark);
+    /* Dark text */
+    border-color: var(--bs-primary-dark);
+    /* Dark border */
+}
+
+.btn-outline-primary-accent:hover {
+    background-color: var(--bs-primary-dark);
+    color: #fff;
+    /* White text on dark hover */
+}
+
+
+
+/* Hero Section Styling */
+.hero-section {
+    /* Updated placeholder URL for a Deep Slate/Teal interior */
+    background: url('https://placehold.co/1600x600/2C3E50/EFF3F4?text=Modern+Teal+Bistro') center center / cover no-repeat;
+    color: #fff;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Slightly transparent Deep Slate overlay */
+    background-image: url(../images/bg.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 2;
+}
+
+.hero-content {
+    z-index: 3;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Menu Card Styling */
+.menu-card {
+    border: 1px solid rgba(44, 62, 80, 0.08);
+    /* Darker border hint */
+    border-radius: 1rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 12px rgba(44, 62, 80, .1);
+    /* Shadow hint of dark slate */
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.menu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(44, 62, 80, .2);
+}
+
+.card-img-top {
+    height: 250px;
+    object-fit: cover;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    transition: opacity 0.3s;
+}
+
+/* Filter Tabs */
+.nav-link.active {
+    font-weight: 700;
+    color: var(--bs-primary-dark) !important;
+    /* Dark text for active tab */
+    border-bottom: 3px solid var(--bs-accent);
+    /* Teal line underneath */
+    background-color: transparent !important;
+}
+
+.nav-link {
+    color: var(--bs-primary-dark);
+    transition: color 0.2s;
+}
+
+.nav-link:hover {
+    color: var(--bs-accent);
+    /* Teal hover */
+}
+
+/* Modal specific styling - Kept for reference but not currently used */
+.modal-body-img {
+    max-height: 45vh;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
