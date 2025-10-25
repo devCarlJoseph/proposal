@@ -1,17 +1,13 @@
 /* Load Inter Font from Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-/* --- THEME COLOR DEFINITION --- */
 :root {
-    /* Deep Teal / Aqua for a modern culinary look */
     --theme-color: #1A938C;
-    /* Slightly darker for hover/active state */
     --theme-color-dark: #157973;
-    /* Light theme color for badge background */
     --theme-color-light: #6ac5c0;
 }
 
-/* Custom Utility Classes to replace Bootstrap's 'danger' for the theme */
+
 .text-theme {
     color: var(--theme-color) !important;
 }
@@ -24,7 +20,6 @@
     background-color: var(--theme-color) !important;
 }
 
-/* Custom Button Style */
 .btn-theme {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--theme-color);
@@ -36,7 +31,6 @@
     --bs-btn-active-bg: var(--theme-color-dark);
     --bs-btn-active-border-color: var(--theme-color-dark);
     --bs-btn-disabled-bg: #89b8b6;
-    /* Lighter shade for disabled state */
     --bs-btn-disabled-border-color: #89b8b6;
 }
 
@@ -50,7 +44,6 @@ body {
     background-color: #f8f8f8;
 }
 
-/* Custom styling for the search input field */
 .search-input-custom {
     border: 2px solid #e0e0e0;
     transition: all 0.2s ease-in-out;
@@ -59,11 +52,9 @@ body {
 .search-input-custom:focus {
     border-color: var(--theme-color);
     box-shadow: 0 0 0 0.25rem rgba(26, 147, 140, 0.25);
-    /* Theme color with opacity */
     background-color: #ffffff;
 }
 
-/* Custom scrollbar for cart for aesthetics */
 #cart-items-container::-webkit-scrollbar {
     width: 8px;
 }
@@ -73,7 +64,7 @@ body {
     border-radius: 4px;
 }
 
-/* Modal styling for universal cart */
+
 .universal-modal {
     position: fixed;
     top: 0;
@@ -85,7 +76,6 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1050;
-    /* Above navbar */
 }
 
 .modal-content-area {
@@ -106,7 +96,13 @@ body {
     opacity: 1;
 }
 
-/* Mobile specific positioning for modal to pop up from bottom */
+
+.table-responsive {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
 @media (max-width: 768px) {
     .modal-content-area {
         width: 100%;
@@ -118,6 +114,5 @@ body {
 
     .universal-modal {
         align-items: flex-end;
-        /* Stick to bottom on small screens */
     }
 }

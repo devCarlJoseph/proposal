@@ -1,12 +1,9 @@
-/* Load Inter Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root {
-    /* Deep Teal / Aqua theme */
     --theme-color: #1A938C;
     --theme-color-dark: #157973;
     --low-stock-color: #dc3545;
-    /* Bootstrap Red */
     --bg-color: #f8f8f8;
     --logout-color: #dc3545;
     --logout-color-dark: #c82333;
@@ -17,7 +14,6 @@ body {
     background-color: var(--bg-color);
 }
 
-/* Custom Button Style */
 .btn-theme {
     --bs-btn-color: #fff;
     --bs-btn-bg: var(--theme-color);
@@ -34,7 +30,6 @@ body {
     --bs-btn-hover-border-color: var(--logout-color-dark);
 }
 
-/* Inventory Table Styling */
 .table-responsive {
     border-radius: 0.75rem;
     overflow: hidden;
@@ -65,7 +60,7 @@ body {
     min-width: 60px;
 }
 
-/* Custom Modal Replacement for prompt/confirm */
+
 .custom-modal-overlay {
     position: fixed;
     top: 0;
@@ -77,14 +72,43 @@ body {
     align-items: center;
     justify-content: center;
     z-index: 1050;
-    /* Bootstrap modal Z-index */
+    padding: 10px;
 }
 
 .custom-modal-content {
     background: white;
     padding: 2rem;
     border-radius: 1rem;
-    max-width: 450px;
     width: 90%;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+    .custom-modal-content {
+        max-width: 450px;
+    }
+    #confirmModal .btn,
+    #resetConfirmModal .btn,
+    #logoutConfirmModal .btn {
+        width: auto !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+/* Enable horizontal scrolling on smaller screens */
+@media (max-width: 767.98px) {
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* smooth scrolling for iOS */
+        display: block;
+        width: 100%;
+        white-space: nowrap; /* prevents wrapping of table cells */
+    }
+
+    .table th, 
+    .table td {
+        white-space: nowrap; /* keeps text in one line to avoid wrapping */
+    }
 }

@@ -18,8 +18,6 @@
 
 <body>
 
-    <!-- Navigation Bar -->
-    <!-- Brand text color changed to use the new accent color (Teal) -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand playfair-heading fs-4 fw-bold text-accent-color" href="inventory.html">Lourdes
@@ -28,39 +26,36 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+            <div class="collapse navbar-collapse justify-content-center text-center" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link text-dark" href="#menu-section">Menu</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#about-us">About Us</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#location">Location</a></li>
-                    <!-- Button class changed to use the new primary accent styles (Dark Outline) -->
-                    <li class="nav-item"><a class="nav-link btn btn-outline-primary-accent ms-lg-3 px-4 fw-semibold"
-                            href="order.html">Order
-                            Online</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary-accent px-4 fw-semibold" href="order.html">
+                            Order Online
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero-section mb-5">
         <div class="hero-overlay"></div>
         <div class="hero-content text-center">
             <h1 class="playfair-heading display-1 fw-bold mb-3">Lourdes Eatery</h1>
             <p class="lead fs-4 fw-light text-white mb-4">Experience the Taste of Homegrown Goodness.</p>
-            <!-- Button class updated: uses new teal primary accent styles -->
             <a href="#menu-section" class="btn btn-primary-accent btn-lg fw-semibold" role="button">View Today's
                 Menu</a>
         </div>
     </section>
 
-    <!-- Menu Section -->
     <main class="container py-5" id="menu-section">
         <header class="text-center mb-5">
             <h2 class="playfair-heading display-5 fw-bold text-dark">Our Menu</h2>
         </header>
 
-        <!-- Search and Filter Controls: WIDTH HAS BEEN REDUCED AND CENTERED -->
         <div class="row g-3 mb-4 d-flex justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <input type="text" id="menu-search"
@@ -69,7 +64,6 @@
             </div>
         </div>
 
-        <!-- Filter Tabs -->
         <div class="d-flex justify-content-center mb-5 border-bottom">
             <ul class="nav nav-tabs border-0">
                 <li class="nav-item">
@@ -81,22 +75,17 @@
             </ul>
         </div>
 
-        <!-- Dynamic Status Indicator -->
         <h3 id="status-indicator" class="playfair-heading fs-4 fw-bold text-center text-muted mb-4">Loading Menu...</h3>
 
-        <!-- Menu Grid View -->
         <section id="menu-grid-view" class="row g-4" style="display: flex;">
             <div class="col-12 text-center py-5 text-secondary">Initializing content...</div>
         </section>
 
-        <!-- Accordion View (Kept as placeholder, but always hidden) -->
         <section id="menu-accordion-view" class="row g-4" style="display: none;">
         </section>
 
     </main>
 
-    <!-- --- ABOUT US SECTION --- -->
-    <!-- Background is still light, but colors and text are richer -->
     <section id="about-us" class="bg-light py-5">
         <div class="container">
             <div class="row align-items-center">
@@ -109,18 +98,15 @@
                         cooking**.
                         Whether you're grabbing a quick breakfast or settling in for a multi-course dinner, you'll taste
                         the difference that dedication makes.</p>
-                    <!-- Text color changed to use the new accent color (Teal) -->
                     <p class="fw-semibold text-accent-color">Come share a plate with us.</p>
                 </div>
                 <div class="col-lg-6 text-center">
-                    <!-- Placeholder image updated to match the new dark color -->
                     <img src="src/images/about us.jpg" class="img-fluid rounded-4 shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- --- LOCATION SECTION --- -->
     <section id="location" class="py-5 bg-light">
         <div class="container">
             <header class="text-center mb-5">
@@ -129,7 +115,6 @@
             </header>
 
             <div class="row g-4">
-                <!-- Contact Info Card -->
                 <div class="col-lg-6">
                     <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
                         <h3 class="playfair-heading fs-4 fw-bold mb-3">Find Our Bistro</h3>
@@ -165,7 +150,6 @@
                     </div>
                 </div>
 
-                <!-- Map Card -->
                 <div class="col-lg-6">
                     <div class="card border-0 shadow-lg rounded-4 overflow-hidden h-100">
                         <h3 class="playfair-heading fs-4 fw-bold p-4 mb-0">
@@ -184,12 +168,9 @@
     </section>
 
 
-    <!-- Footer -->
-    <!-- Footer background uses the new bg-dark-custom (Deep Slate/Midnight Blue) -->
     <footer class="bg-dark-custom text-white py-4 mt-5">
         <div class="container text-center">
 
-            <!-- Footer name text color changed to use the new accent color (Teal) -->
             <p class="playfair-heading fs-5 text-accent-color fw-bold mb-2">Lourdes Eatery</p>
             <p class="small text-white opacity-75 mb-3">Experience the Taste of Homegrown Goodness.</p>
 
@@ -200,7 +181,6 @@
                 <span class="text-white opacity-50">|</span>
                 <a href="tel:555555FOOD" class="footer-link-simple">123 456 8910</a>
                 <span class="text-white opacity-50">|</span>
-                <!-- Order Online link text color changed to use the new accent color (Teal) -->
                 <a href="order.html" class="footer-link-simple text-accent-color fw-bold">Order Online</a>
             </div>
 
@@ -210,7 +190,7 @@
         </div>
     </footer>
 
-    <!-- Load Bootstrap 5 JS Bundle -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         xintegrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
